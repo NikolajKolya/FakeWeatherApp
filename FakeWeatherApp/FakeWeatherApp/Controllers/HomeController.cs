@@ -1,6 +1,7 @@
 ﻿using FakeWeatherApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using FakeWeatherApp.Models.ViewModels;
 
 namespace FakeWeatherApp.Controllers
 {
@@ -13,20 +14,24 @@ namespace FakeWeatherApp.Controllers
             _logger = logger;
         }
 
+        public IActionResult CurrentWeather()
+        {
+            return View();
+        }
+        
+        public IActionResult WeekForecast()
+        {
+            return View();
+        }
+        
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var model = new HomeViewModel()
+            {
+                CityName = "Подгорица"
+            };
+            
+            return View(model);
         }
     }
 }

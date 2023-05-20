@@ -1,8 +1,12 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model FakeWeatherApp.Models.ViewModels.HomeViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+    <h1>Погода на сегодня</h1>
+    <h2>Город: @Model.CityName</h2>
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="CurrentWeather" title="Узнать текущую погоду">Текущая погода</a>
+    <br>
+    <a asp-controller="Home" asp-action="WeekForecast" title="Прогноз на неделю">Прогноз на 7 дней</a>
 </div>
