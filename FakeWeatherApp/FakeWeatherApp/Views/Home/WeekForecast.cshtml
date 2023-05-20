@@ -1,3 +1,75 @@
-﻿<h1>Недельный прогноз</h1>
+﻿@using FakeWeatherApp.Models.Enums
+@model FakeWeatherApp.Models.ViewModels.WeatherForecastViewModel
+
+<h1>Недельный прогноз</h1>
+
+<table>
+    <thead>
+        <tr>
+            <td></td>
+            <td>День 1</td>
+            <td>День 2</td>
+            <td>День 3</td>
+            <td>День 4</td>
+            <td>День 5</td>
+            <td>День 6</td>
+            <td>День 7</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Температура:</td>
+            
+            @{
+                foreach (var dayForecast in Model.Forecast)
+                {
+                    <td>
+                        @dayForecast.Temperature
+                    </td>
+                }
+            }
+        </tr>
+        
+        <tr>
+            <td>Влажность:</td>
+                        
+            @{
+                foreach (var dayForecast in Model.Forecast)
+                {
+                    <td>
+                        @dayForecast.Humidity
+                    </td>
+                }
+            }
+        </tr>
+    
+        <tr>
+            <td>Погода:</td>
+            
+            @{
+                foreach (var dayForecast in Model.Forecast)
+                {
+                    <td>
+                        @switch(dayForecast.Type)
+                        {
+                            case WeatherType.Clear:
+                                <span>Ясно</span>
+                                break;
+                                
+                            case WeatherType.Cloudy:
+                                <span>Облачно</span>
+                                break;
+                                
+                            case WeatherType.Rain:
+                                <span>Дождь</span>
+                                break;
+                        }
+                    </td>
+                }
+            }
+        </tr>
+    
+    </tbody>
+</table>
 
 <a asp-controller="Home" asp-action="Index" title="Назад">Назад</a>

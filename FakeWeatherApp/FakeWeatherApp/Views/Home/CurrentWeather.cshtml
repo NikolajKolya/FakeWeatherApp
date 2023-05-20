@@ -1,2 +1,27 @@
-﻿<h1>Текущая погода</h1>
+﻿@using FakeWeatherApp.Models.Enums
+@model FakeWeatherApp.Models.ViewModels.CurrentWeatherViewModel 
+
+<h1>Текущая погода</h1>
+<ul>
+    <li>Температура: @Model.Weather.Temperature</li>
+    <li>Влажность: @Model.Weather.Humidity</li>
+    <li>Погода:
+        @{
+            switch (Model.Weather.Type)
+            {
+                case WeatherType.Clear:
+                    <span>Чудесная погода</span>
+                    break;
+                    
+                case WeatherType.Cloudy:
+                    <span>Облачно</span>
+                    break;
+                    
+                case WeatherType.Rain:
+                    <span>Идёт дождь</span>
+                    break;
+            }
+        }
+    </li>
+</ul>
 <a asp-controller="Home" asp-action="Index" title="Назад">Назад</a>
