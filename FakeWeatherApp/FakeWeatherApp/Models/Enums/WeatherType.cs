@@ -4,9 +4,9 @@ namespace FakeWeatherApp.Models.Enums;
 
 public enum WeatherType
 {
-    Clear,
+    Clear = 0,
     
-    Cloudy,
+    Cloudy = 1,
     
-    Rain
+    Rain = 2
 }

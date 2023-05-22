@@ -10,15 +10,15 @@
             switch (Model.Weather.Type)
             {
                 case WeatherType.Clear:
-                    <span>Чудесная погода</span>
+                    <span>Чудесная погода <img class="weather-image-big" src="~/images/sunny.png" alt="Солнечно" /></span>
                     break;
                     
                 case WeatherType.Cloudy:
-                    <span>Облачно</span>
+                    <span>Облачно <img class="weather-image-big" src="~/images/cloudy.png" alt="Облачно" /></span>
                     break;
                     
                 case WeatherType.Rain:
-                    <span>Идёт дождь</span>
+                    <span>Идёт дождь <img class="weather-image-big" src="~/images/rain.png" alt="Дождь"/></span>
                     break;
             }
         }

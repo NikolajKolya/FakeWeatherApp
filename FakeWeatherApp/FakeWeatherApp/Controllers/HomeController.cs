@@ -1,8 +1,11 @@
-﻿using FakeWeatherApp.Models;
+using FakeWeatherApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using FakeWeatherApp.Models.Enums;
 using FakeWeatherApp.Models.ViewModels;
+using FakeWeatherApp.Services;
+using FakeWeatherApp.Services.Abstract;
+using FakeWeatherApp.Services.Implementations;
 
 namespace FakeWeatherApp.Controllers
 {
@@ -10,40 +13,36 @@ namespace FakeWeatherApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IWeatherService _weatherService;
+        
+        public HomeController
+        (
+            ILogger<HomeController> logger,
+            IWeatherService weatherService
+        )
         {
             _logger = logger;
+            _weatherService = weatherService;
         }
 
-        public IActionResult CurrentWeather()
+        public async Task<IActionResult> CurrentWeather()
         {
 
             var model = new CurrentWeatherViewModel()
             {
-                Weather = new WeatherDto()
-                {
-                    Temperature = 36,
-                    Humidity = 58,
-                    Type = WeatherType.Clear
-                }
+                Weather = await _weatherService.GenerateWeatherAsync()
             };
             
             return View(model);
         }
         
-        public IActionResult WeekForecast()
+        public async Task<IActionResult> WeekForecast()
         {
-            var forecast = new List<WeatherDto>()
+            var forecast = new List<WeatherDto>();
+            for (int i = 0; i < 7; i++)
             {
-                new WeatherDto() { Temperature = 20, Humidity = 50, Type = WeatherType.Clear},
-                new WeatherDto() { Temperature = 22, Humidity = 55, Type = WeatherType.Clear},
-                new WeatherDto() { Temperature = 24, Humidity = 60, Type = WeatherType.Cloudy},
-                new WeatherDto() { Temperature = 26, Humidity = 58, Type = WeatherType.Clear},
-                new WeatherDto() { Temperature = 28, Humidity = 70, Type = WeatherType.Rain},
-                new WeatherDto() { Temperature = 30, Humidity = 75, Type = WeatherType.Rain},
-                new WeatherDto() { Temperature = 32, Humidity = 73, Type = WeatherType.Cloudy}
-            };
-
+                forecast.Add(await _weatherService.GenerateWeatherAsync()); 
+            }
             var model = new WeatherForecastViewModel()
             {
                 Forecast = forecast

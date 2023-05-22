@@ -13,6 +13,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Kaludjerovic\\Desktop\\Lessons\\FakeWeatherApp\\FakeWeatherApp\\FakeWeatherApp\\wwwroot\\images\\cloudy.png",
+      "PackagePath": "staticwebassets\\images\\cloudy.png"
+    },
+    {
+      "Id": "C:\\Users\\Kaludjerovic\\Desktop\\Lessons\\FakeWeatherApp\\FakeWeatherApp\\FakeWeatherApp\\wwwroot\\images\\rain.png",
+      "PackagePath": "staticwebassets\\images\\rain.png"
+    },
+    {
+      "Id": "C:\\Users\\Kaludjerovic\\Desktop\\Lessons\\FakeWeatherApp\\FakeWeatherApp\\FakeWeatherApp\\wwwroot\\images\\sunny.png",
+      "PackagePath": "staticwebassets\\images\\sunny.png"
+    },
+    {
       "Id": "C:\\Users\\Kaludjerovic\\Desktop\\Lessons\\FakeWeatherApp\\FakeWeatherApp\\FakeWeatherApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

@@ -7,13 +7,13 @@
     <thead>
         <tr>
             <td></td>
-            <td>День 1</td>
-            <td>День 2</td>
-            <td>День 3</td>
-            <td>День 4</td>
-            <td>День 5</td>
-            <td>День 6</td>
-            <td>День 7</td>
+            <td class="week-forecast-column">День 1</td>
+            <td class="week-forecast-column">День 2</td>
+            <td class="week-forecast-column">День 3</td>
+            <td class="week-forecast-column">День 4</td>
+            <td class="week-forecast-column">День 5</td>
+            <td class="week-forecast-column">День 6</td>
+            <td class="week-forecast-column">День 7</td>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
             @{
                 foreach (var dayForecast in Model.Forecast)
                 {
-                    <td>
+                    <td class="week-forecast-column">
                         @dayForecast.Temperature
                     </td>
                 }
@@ -36,7 +36,7 @@
             @{
                 foreach (var dayForecast in Model.Forecast)
                 {
-                    <td>
+                    <td class="week-forecast-column">
                         @dayForecast.Humidity
                     </td>
                 }
@@ -49,19 +49,22 @@
             @{
                 foreach (var dayForecast in Model.Forecast)
                 {
-                    <td>
+                    <td class="week-forecast-column">
                         @switch(dayForecast.Type)
                         {
                             case WeatherType.Clear:
                                 <span>Ясно</span>
+                                <img class="weather-image-small" src="~/images/sunny.png" alt="Солнечно" />
                                 break;
                                 
                             case WeatherType.Cloudy:
                                 <span>Облачно</span>
+                                <img class="weather-image-small" src="~/images/cloudy.png" alt="Облачно" />   
                                 break;
                                 
                             case WeatherType.Rain:
                                 <span>Дождь</span>
+                                <img class="weather-image-small" src="~/images/rain.png" alt="Дождь"/> 
                                 break;
                         }
                     </td>
